@@ -18,6 +18,8 @@ router.get("/auth", auth, (req, res) => {
         lastname: req.user.lastname,
         role: req.user.role,
         image: req.user.image,
+        cart: req.user.cart,
+        history: req.user.history,
     });
 });
 
@@ -101,7 +103,7 @@ router.post("/addToCart", auth, (req, res) => {
                 {
                     $push: {
                         cart: {
-                            id: req.body.producId,
+                            id: req.body.productId,
                             quantity: 1,
                             date: Date.now()
                         }
