@@ -109,7 +109,7 @@ router.get('/product_by_id', (req, res) => {
 
 
   if(type === "array") {
-    //id== 123123123,324324,324324234 이거를 type= array
+    //id== 123123123,324324,324324234 이거를 
     // productIds =['123123123','324324','324324234'] 이런식으로  바꿔주기
 
     let ids = req.query.id.split(',')
@@ -123,7 +123,7 @@ router.get('/product_by_id', (req, res) => {
     .populate('writer')
     .exec((err, product) => {
       if(err) return res.status(400).send(err)
-      return res.status(200).json({ success: true, product })
+      return res.status(200).send(product)
     })
 
 })
