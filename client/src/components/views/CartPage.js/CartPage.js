@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import { getCartItems, removeCartItem} from '../../../_actions/user_actions';
 import UserCardBlock from './Secions/UserCardBlock';
 import { Empty } from 'antd';
+import  Paypal  from '../../utils/Paypal';
 
 function CartPage(props) {
     const dispatch = useDispatch();
@@ -53,7 +54,7 @@ function CartPage(props) {
             </div>
             {ShowTotal ?
                 <div style={{ marginTop: '3rem' }}>
-                    <h2>Total Amount: ${Total}</h2>
+                    <h2>Total Amount: ${Total}</h2>                
                 </div>
                 :
                 <>
@@ -63,6 +64,13 @@ function CartPage(props) {
                     There are no items in the shopping basket.
                 </>
             }
+
+            {ShowTotal && 
+                <Paypal 
+                    total={Total}
+                />
+            }
+            
         </div>
     )
 }
